@@ -16,7 +16,6 @@ export class GildedRose {
     constructor(items = [] as Array<Item>) {
         this.items = items;
     }
-
     
     updateQuality() {
         const products = this.items;
@@ -26,27 +25,26 @@ export class GildedRose {
             let quality = item.quality
 
             function increaseQuality() {
-                if (quality < 50) {
-                    quality++
+                if (item.quality < 50) {
+                    item.quality++
                 }
-                //return quality;
-                
+
             }
-            if (name != 'Aged Brie' 
-                && name != 'Backstage passes to a TAFKAL80ETC concert' 
-                && name != 'Sulfuras, Hand of Ragnaros') {
-                if (item.quality > 0) {
+            if (name != 'Aged Brie' && name != 'Backstage passes to a TAFKAL80ETC concert') {
+                if (quality > 0) {
+                    if (name != 'Sulfuras, Hand of Ragnaros') {
                         item.quality--
                     }
+                }
             } else {
                 if (item.quality < 50) {
                     item.quality++
                     if (name == 'Backstage passes to a TAFKAL80ETC concert') {
                         if (sellIn < 11) {
-                            increaseQuality();
+                            increaseQuality()
                         }
                         if (sellIn < 6) {
-                            increaseQuality();
+                            increaseQuality()
                         }
                     }
                 }
@@ -57,16 +55,16 @@ export class GildedRose {
             if (sellIn < 0) {
                 if (name != 'Aged Brie') {
                     if (name != 'Backstage passes to a TAFKAL80ETC concert') {
-                        if (quality > 0) {
+                        if (item.quality > 0) {
                             if (name != 'Sulfuras, Hand of Ragnaros') {
-                                quality--
+                                item.quality--
                             }
                         }
                     } else {
                         item.quality = 0
                     }
                 } else {
-                    increaseQuality();
+                    increaseQuality()
                 }
             }
         })
